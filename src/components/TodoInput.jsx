@@ -2,21 +2,16 @@ import React from "react";
 
 const TodoInput = () => {
   return (
-    <div>
-      <div class="form-control w-full max-w-xs">
-        <label class="label">
-          <span class="label-text">What is your name?</span>
-          <span class="label-text-alt">Alt label</span>
+    <div className="mb-10">
+      <div className="form-control w-full max-w-xl">
+        <label className="label">
+          <span className="label-text">할 일을 추가해 주세요!</span>
         </label>
         <input
           type="text"
           placeholder="Type here"
-          class="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full max-w-xl"
         />
-        <label class="label">
-          <span class="label-text-alt">Alt label</span>
-          <span class="label-text-alt">Alt label</span>
-        </label>
       </div>
     </div>
   );
