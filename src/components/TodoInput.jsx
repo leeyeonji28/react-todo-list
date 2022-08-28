@@ -9,7 +9,7 @@ const TodoInput = () => {
         </label>
         <input
           type="text"
-          placeholder="Type here"
+          placeholder="add..."
           className="input input-bordered w-full max-w-xl"
         />
       </div>
