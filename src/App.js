@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 
@@ -20,9 +20,11 @@ function App() {
       checked: false,
     },
   ]);
+  const nextId = useRef(4); //변경되도 렌더링을 안 함
+
   return (
     <div className="max-w-4xl m-auto">
-      <TodoInput />
+      <TodoInput todos={todos} nextId={nextId} setTodos={setTodos} />
       <TodoList todos={todos} />
     </div>
   );
