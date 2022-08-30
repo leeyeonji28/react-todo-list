@@ -6,16 +6,20 @@ import TodoList from "./components/TodoList";
 function App() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getList = async () => {
-      const json = await axios({
-        url: "http://localhost:8090/todos",
-        method: "GET",
-      });
-      setTodos(json.data);
-      // console.log(json.data);
+      try {
+        const json = await axios({
+          url: "http://localhost:8090/todos",
+          method: "GET",
+        });
+        setTodos(json.data);
+        setLoading(false);
+      } catch (e) {
+        setError(e);
+      }
     };
 
     getList();
@@ -39,6 +43,13 @@ function App() {
   // }, []);
 
   const nextId = useRef(todos.length); //변경되도 렌더링을 안 함
+
+  if (error) {
+    return <span>{error.message}</span>;
+  }
+  if (loading) {
+    return <span>Loading...</span>;
+  }
 
   return (
     <div className="max-w-4xl m-auto">
