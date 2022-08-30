@@ -38,7 +38,7 @@ function App() {
   //   getList();
   // }, []);
 
-  const nextId = useRef(4); //변경되도 렌더링을 안 함
+  const nextId = useRef(todos.length); //변경되도 렌더링을 안 함
 
   return (
     <div className="max-w-4xl m-auto">

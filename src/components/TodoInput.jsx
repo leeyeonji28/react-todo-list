@@ -9,14 +9,14 @@ const TodoInput = ({ todos, nextId, setTodos }) => {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            const todo = { id: nextId.current, content: value, checked: false };
-            setTodos((prev) => prev.concat(todo));
+            // const todo = { id: nextId.current, content: value, checked: false };
+            // setTodos((prev) => prev.concat(todo));
             const json = await axios({
               url: "http://localhost:8090/todos",
               method: "POST",
               data: { content: value },
             });
-            // console.log(json.data);
+            setTodos(json.data);
             nextId.current++;
           }}
         >
