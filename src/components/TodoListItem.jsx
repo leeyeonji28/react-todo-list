@@ -3,11 +3,11 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { FiEdit3, FiTrash2 } from "react-icons/fi";
 import axios from "axios";
 
-const TodoListItem = ({ todo, setTodos }) => {
+const TodoListItem = ({ todo, setTodos, index }) => {
   const { id, checked, content } = todo;
   return (
     <tr>
-      <th>{id}</th>
+      <th>{index + 1}</th>
       <td>{content}</td>
       <td className="cursor-pointer">
         <div

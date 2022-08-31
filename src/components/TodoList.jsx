@@ -17,7 +17,12 @@ const TodoList = ({ todos, setTodos }) => {
           </thead>
           <tbody>
             {todos.map((todo, index) => (
-              <TodoListItem todo={todo} key={index} setTodos={setTodos} />
+              <TodoListItem
+                todo={todo}
+                key={index}
+                setTodos={setTodos}
+                index={index}
+              />
             ))}
           </tbody>
         </table>
