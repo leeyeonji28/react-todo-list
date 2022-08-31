@@ -1,8 +1,9 @@
 import React from "react";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { FiEdit3, FiTrash2 } from "react-icons/fi";
+import axios from "axios";
 
-const TodoListItem = ({ todo }) => {
+const TodoListItem = ({ todo, setTodos }) => {
   const { id, checked, content } = todo;
   return (
     <tr>
@@ -21,7 +22,21 @@ const TodoListItem = ({ todo }) => {
         <FiEdit3 />
       </td>
       <td className="remove cursor-pointer">
-        <FiTrash2 />
+        <div
+          // 배열에 담아서 삭제
+          // onClick={() => {
+          //   setTodos((todos) => todos.filter((todo) => todo.id !== id));
+          // }}
+          onClick={async () => {
+            const data = await axios({
+              url: `http://localhost:8090/todos/${id}`,
+              method: "DELETE",
+            });
+            setTodos(data.data);
+          }}
+        >
+          <FiTrash2 />
+        </div>
       </td>
     </tr>
   );
