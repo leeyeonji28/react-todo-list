@@ -8,11 +8,17 @@ const TodoListItem = ({ todo, setTodos, index }) => {
   return (
     <tr>
       <th>{index + 1}</th>
-      <td>{content}</td>
+      {checked ? <td className="line-through text-gray-400">{content}</td> : <td>{content}</td>}
       <td className="cursor-pointer">
         <div
-          onClick={() => {
-            alert("체크 출력 됨");
+          onClick={async () => {
+            // js방식
+            // setTodos((todos) => todos.map((todo, index) => todo.id === id ? {...todo, checked : !todo.checked} : todo))
+            const data = await axios({
+              url: `http://localhost:8090/todos/${id}`,
+              method: "PATCH",
+            });
+            setTodos(data.data);
           }}
         >
           {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
