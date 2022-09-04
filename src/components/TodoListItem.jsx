@@ -8,7 +8,11 @@ const TodoListItem = ({ todo, setTodos, index }) => {
   return (
     <tr>
       <th>{index + 1}</th>
-      {checked ? <td className="line-through text-gray-400">{content}</td> : <td>{content}</td>}
+      {checked ? (
+        <td className="line-through text-gray-400">{content}</td>
+      ) : (
+        <td>{content}</td>
+      )}
       <td className="cursor-pointer">
         <div
           onClick={async () => {
@@ -25,7 +29,11 @@ const TodoListItem = ({ todo, setTodos, index }) => {
         </div>
       </td>
       <td className="edit cursor-pointer">
-        <FiEdit3 />
+        <div for="my-modal-5">
+          <label for="my-modal-5" class="btn btn-active btn-ghost">
+            <FiEdit3 />
+          </label>
+        </div>
       </td>
       <td className="remove cursor-pointer">
         <div
